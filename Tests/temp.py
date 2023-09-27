@@ -1,6 +1,6 @@
 import pytesseract
 import cv2
-from table_ocr import ocr_image
+from table_ocr.extract_cells import extract_cell_images_from_table
 
 # Load the image
 image = cv2.imread("Main/Test_1.png")
@@ -21,7 +21,7 @@ thresh = cv2.threshold(blur, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)[1]
 dilate = cv2.dilate(thresh, kernel, iterations=1)
 
 # Extract cells from the dilated image
-cells = ocr_image(dilate)
+cells = extract_cell_images_from_table(dilate)
 
 # Now, you can perform OCR on each cell using pytesseract
 for cell in cells:

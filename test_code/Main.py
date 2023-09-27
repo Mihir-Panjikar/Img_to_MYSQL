@@ -19,6 +19,7 @@ cnts = cnts[0] if len(cnts) == 2 else cnts[1]
 
 cnts = sorted(cnts, key=lambda x: cv2.boundingRect(x)[0])
 
+ocr_result = ""
 for c in cnts:
     x, y, w, h = cv2.boundingRect(c)
     cv2.rectangle(image, (x, y), (x+w, y+h), (36, 255, 12), 2)        
